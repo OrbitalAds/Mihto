@@ -2,7 +2,7 @@
 
 ## What is it?
 
-Mihto is an evaluation language made by [JavierLuna](https://github.com/JavierLuna/mihto) while trying to figure out how compilers and interpreters work.
+Mihto (Spanish pronunciation: [mĩʃt̪o]) is an evaluation language made by [JavierLuna](https://github.com/JavierLuna/mihto) while trying to figure out how compilers and interpreters work.
 
 Basically it reads and evaluates an expression (or chain of expressions) 
 
