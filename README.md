@@ -27,7 +27,7 @@ using MAJOR.MINOR.PATCH format. A bump in the PATCH part will not mean API break
 
 ## How to use it in your python code
 
-You can use the language directly or the facade created for the Discriminator, it doesn't really matter.
+You can use the language directly through the Mihto class.
 
 Through Mihto:
 `result = Mihto({'a': 2}).evaluate("1 = a")`
