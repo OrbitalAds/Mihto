@@ -6,7 +6,6 @@ import mihto.lexer.token_types as ttypes
 
 class TestLexer(unittest.TestCase):
 
-
     def test_tokenize_integer(self):
         expression = "1"
         tokens = Lexer(expression).tokenize()
@@ -108,12 +107,6 @@ class TestLexer(unittest.TestCase):
         tokens = Lexer(expression).tokenize()
         self.assertEqual(len(tokens), 1)
         self.assertEqual(tokens[0].type, ttypes.OR)
-
-    def test_tokenize_apostrophe(self):
-        expression = "'"
-        tokens = Lexer(expression).tokenize()
-        self.assertEqual(len(tokens), 1)
-        self.assertEqual(tokens[0].type, ttypes.APOSTROPHE)
 
     def test_tokenize_open_par(self):
         expression = "("
