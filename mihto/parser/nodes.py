@@ -42,16 +42,6 @@ class IntegerNode(ValueNode):
     def __init__(self, value: int):
         super().__init__(value)
 
-
-class StringNode(ValueNode):
-    __nodetype__ = "String"
-
-    def __init__(self, value: str):
-        super().__init__(value)
-
-    def __str__(self):
-        return "'{}'".format(self.value)
-
 class VarRefNode(ValueNode):
     __nodetype__ = "VarRef"
 

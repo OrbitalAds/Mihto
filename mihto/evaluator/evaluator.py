@@ -1,6 +1,7 @@
 from mihto.parser.nodes import ExpressionNode
 import mihto.lexer.token_types as ttypes
 
+
 class Evaluator:
     OPS = {
         ttypes.AND: lambda x, y: x and y,

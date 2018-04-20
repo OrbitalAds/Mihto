@@ -9,10 +9,8 @@ OR = 'or'
 IDENTIFIER = 'identifier'
 FLOAT = 'float'
 INTEGER = 'integer'
-APOSTROPHE = "apostrophe"
 OPENPAR = 'openpar'
 CLOSEPAR = 'closepar'
-
 
 TOKEN_PATTERNS = [
     [LESS_EQ_THAN, r"<="],
@@ -23,10 +21,9 @@ TOKEN_PATTERNS = [
     [EQUALS, r"="],
     [AND, r"y"],
     [OR, r"o"],
-    [IDENTIFIER, r"([a-zA-Z]+\d*)+"],
+    [IDENTIFIER, r"[a-zA-Z]+"],
     [FLOAT, r"\d+\.\d+"],
     [INTEGER, r"\d+"],
-    [APOSTROPHE, r"'"],
     [OPENPAR, r"\("],
     [CLOSEPAR, r"\)"]
 ]
