@@ -6,8 +6,8 @@ class Mihto:
     def __init__(self, env=None):
         self.env = env or {}
 
-    def evaluate(self, rules: str):
-        lexer = Lexer(rules)
+    def evaluate(self, expression: str):
+        lexer = Lexer(expression)
         tokens = lexer.tokenize()
         parser = Parser(tokens)
         expression = parser.parse()
