@@ -4,17 +4,10 @@ https://packaging.python.org/en/latest/distributing.html
 https://github.com/pypa/sampleproject
 """
 from setuptools import setup, find_packages
-from codecs import open
-from os import path
-
-here = path.abspath(path.dirname(__file__))
-
-with open(path.join(here, 'README.md'), encoding='utf-8') as f:
-    long_description = f.read()
 
 setup(
     name='mihto',
-    version='0.0.1',
+    version='0.0.3',
     description='Easy and simple evaluation language',
     url='https://github.com/OrbitalAds/Mihto',
     author='OrbitalAds',
@@ -30,6 +23,6 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
     ],
-    keywords='profiler profiling time',
+    keywords='evaluation evaluate language',
     packages=find_packages(exclude=['docs', 'examples', 'tests'])
 )
