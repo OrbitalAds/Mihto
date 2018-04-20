@@ -21,7 +21,7 @@ TOKEN_PATTERNS = [
     [EQUALS, r"="],
     [AND, r"y"],
     [OR, r"o"],
-    [IDENTIFIER, r"[a-zA-Z]+"],
+    [IDENTIFIER, r"([a-zA-Z]+\d*)+"],
     [FLOAT, r"\d+\.\d+"],
     [INTEGER, r"\d+"],
     [OPENPAR, r"\("],

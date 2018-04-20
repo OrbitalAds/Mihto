@@ -1,9 +1,11 @@
 import mihto.lexer.token_types as ttypes
+
+
 class ExpressionNode:
     __slots__ = ('value1', 'operator', 'value2')
-    _pretty_ops = {ttypes.LESS_EQ_THAN : '<=', ttypes.LESS_THAN : '<',
-                   ttypes.GREATER_EQ_THAN : '>=', ttypes.GREATER_THAN : '>',
-                   ttypes.EQUALS : '=', ttypes.NOT_EQUALS: '!=', ttypes.AND : 'and', ttypes.OR: 'or'}
+    _pretty_ops = {ttypes.LESS_EQ_THAN: '<=', ttypes.LESS_THAN: '<',
+                   ttypes.GREATER_EQ_THAN: '>=', ttypes.GREATER_THAN: '>',
+                   ttypes.EQUALS: '=', ttypes.NOT_EQUALS: '!=', ttypes.AND: 'and', ttypes.OR: 'or'}
 
     def __init__(self, value1, operator, value2):
         self.value1 = value1
@@ -18,7 +20,7 @@ class ExpressionNode:
 
 
 class ValueNode:
-    __slots__ = ('value', )
+    __slots__ = ('value',)
     __nodetype__ = 'valuenode'
 
     def __init__(self, value):
@@ -30,17 +32,20 @@ class ValueNode:
     def __str__(self):
         return "{}".format(self.value)
 
+
 class FloatNode(ValueNode):
     __nodetype__ = "Float"
 
     def __init__(self, value: float):
         super().__init__(value)
 
+
 class IntegerNode(ValueNode):
     __nodetype__ = "Integer"
 
     def __init__(self, value: int):
         super().__init__(value)
+
 
 class VarRefNode(ValueNode):
     __nodetype__ = "VarRef"

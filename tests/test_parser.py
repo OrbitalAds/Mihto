@@ -26,16 +26,6 @@ class TestParser(unittest.TestCase):
         parsed_expression = self.parse(expression)
         self.assertEqual("1 < 2 and 2 < 3", str(parsed_expression))
 
-    def test_parse_value_integer(self):
-        expression = "1"
-        parsed_expression = self.parse(expression)
-        self.assertEqual("1 = 1", str(parsed_expression))
-
-    def test_parse_value_float(self):
-        expression = "1.123"
-        parsed_expression = self.parse(expression)
-        self.assertEqual("1.123 = 1.123", str(parsed_expression))
-
     def test_parse_or_expression(self):
         expression = "1 = 1 o 2 = 2"
         parsed_expression = self.parse(expression)
@@ -49,4 +39,3 @@ class TestParser(unittest.TestCase):
         self.assertEqual(parsed_expression.value2.operator, ttypes.AND)
         self.assertEqual(parsed_expression.value2.value1.operator, ttypes.EQUALS)
         self.assertEqual(parsed_expression.value2.value2.operator, ttypes.EQUALS)
-
