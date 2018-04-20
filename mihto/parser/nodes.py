@@ -49,6 +49,9 @@ class StringNode(ValueNode):
     def __init__(self, value: str):
         super().__init__(value)
 
+    def __str__(self):
+        return "'{}'".format(self.value)
+
 class VarRefNode(ValueNode):
     __nodetype__ = "VarRef"
 

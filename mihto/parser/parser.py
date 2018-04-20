@@ -9,6 +9,9 @@ class Parser:
         self.tokens = tokens
 
     def parse(self):
+        if len(self.tokens) == 1:
+            value = self._parse_value()
+            return ExpressionNode(value, ttypes.EQUALS, value)
         expression = self._parse_expression()
         return expression
 
@@ -64,15 +67,15 @@ class Parser:
             node = self._parse_float()
         elif self.peek(ttypes.INTEGER):
             node = self._parse_integer()
-        elif self.peek(ttypes.APOSTROPHE):
+        elif self.peek(ttypes.IDENTIFIER):
+            node = self._parse_varref()
+        else:
             self.consume(ttypes.APOSTROPHE)
             values = []
             while not self.peek(ttypes.APOSTROPHE):
                 values.append(self._parse_value().value)
             self.consume(ttypes.APOSTROPHE)
             node = StringNode("".join([str(val) for val in values]))
-        else:
-            node = self._parse_varref()
         return node
 
     def _parse_varref(self) -> VarRefNode:
