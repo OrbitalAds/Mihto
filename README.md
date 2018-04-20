@@ -1,4 +1,5 @@
-# Mihto language
+# Mihto language 
+[![Build Status](https://travis-ci.org/OrbitalAds/Mihto.svg?branch=master)](https://travis-ci.org/OrbitalAds/Mihto)
 
 ## What is it?
 
