@@ -1,6 +1,6 @@
 from mihto.lexer.lexer import Token
 import mihto.lexer.token_types as ttypes
-from mihto.parser.nodes import ExpressionNode, VarRefNode, FloatNode, IntegerNode, StringNode
+from mihto.parser.nodes import ExpressionNode, VarRefNode, FloatNode, IntegerNode
 
 
 class Parser:
@@ -64,13 +64,6 @@ class Parser:
             node = self._parse_float()
         elif self.peek(ttypes.INTEGER):
             node = self._parse_integer()
-        elif self.peek(ttypes.APOSTROPHE):
-            self.consume(ttypes.APOSTROPHE)
-            values = []
-            while not self.peek(ttypes.APOSTROPHE):
-                values.append(self._parse_value().value)
-            self.consume(ttypes.APOSTROPHE)
-            node = StringNode("".join([str(val) for val in values]))
         else:
             node = self._parse_varref()
         return node
