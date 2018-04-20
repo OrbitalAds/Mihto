@@ -12,7 +12,6 @@ INTEGER = 'integer'
 OPENPAR = 'openpar'
 CLOSEPAR = 'closepar'
 
-
 TOKEN_PATTERNS = [
     [LESS_EQ_THAN, r"<="],
     [GREATER_EQ_THAN, r">="],

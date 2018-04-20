@@ -17,38 +17,33 @@ class ExpressionNode:
         return "{} {} {}".format(str(self.value1), self._pretty_ops[self.operator], str(self.value2))
 
 
-class FloatNode:
+class ValueNode:
     __slots__ = ('value', )
+    __nodetype__ = 'valuenode'
+
+    def __init__(self, value):
+        self.value = value
+
+    def __repr__(self):
+        return "<{} {} >".format(self.__nodetype__, self.value)
+
+    def __str__(self):
+        return "{}".format(self.value)
+
+class FloatNode(ValueNode):
+    __nodetype__ = "Float"
 
     def __init__(self, value: float):
-        self.value = value
+        super().__init__(value)
 
-    def __repr__(self):
-        return "<Integer {} >".format(self.value)
-
-    def __str__(self):
-        return "{}".format(self.value)
-
-class IntegerNode:
-    __slots__ = ('value', )
+class IntegerNode(ValueNode):
+    __nodetype__ = "Integer"
 
     def __init__(self, value: int):
-        self.value = value
+        super().__init__(value)
 
-    def __repr__(self):
-        return "<Integer {} >".format(self.value)
-
-    def __str__(self):
-        return "{}".format(self.value)
-
-class VarRefNode:
-    __slots__ = ('value', )
+class VarRefNode(ValueNode):
+    __nodetype__ = "VarRef"
 
     def __init__(self, value: str):
-        self.value = value
-
-    def __repr__(self):
-        return "<Var Ref {} >".format(self.value)
-
-    def __str__(self):
-        return "{}".format(self.value)
+        super().__init__(value)

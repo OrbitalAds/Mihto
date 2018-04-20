@@ -90,5 +90,3 @@ class Parser:
             return self.tokens and self.tokens[offset].type == expected_type
         else:
             return self.tokens and self.tokens[offset].type in expected_type
-
-
