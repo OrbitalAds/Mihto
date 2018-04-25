@@ -1,5 +1,6 @@
 import re
 
+from mihto.lexer.exceptions import UnknownTokenException
 from mihto.lexer.token_types import TOKEN_PATTERNS
 
 
@@ -24,7 +25,7 @@ class Lexer:
                 self.code = self.code[len(value):]
                 return Token(token_type, value)
 
-        raise RuntimeError("Couldn't match token on {}".format(self.code))
+        raise UnknownTokenException("Couldn't match token on {}".format(self.code))
 
 
 class Token:

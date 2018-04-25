@@ -1,5 +1,6 @@
 from mihto.lexer.lexer import Token
 import mihto.lexer.token_types as ttypes
+from mihto.parser.exceptions import UnexpectedTokenFoundException
 from mihto.parser.nodes import ExpressionNode, VarRefNode, FloatNode, IntegerNode
 
 
@@ -9,6 +10,8 @@ class Parser:
         self.tokens = tokens
 
     def parse(self):
+        if not self.tokens:
+            return None
         expression = self._parse_expression()
         return expression
 
@@ -83,7 +86,8 @@ class Parser:
         if token.type == expected_type:
             return token
         else:
-            raise RuntimeError("Expected token type {} but got {} instead".format(expected_type, token.type))
+            raise UnexpectedTokenFoundException(
+                "Expected token type {} but got {} instead".format(expected_type, token.type))
 
     def peek(self, expected_type, offset=0) -> bool:
         if type(expected_type) is str:
