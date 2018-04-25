@@ -7,7 +7,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='mihto',
-    version='0.0.3',
+    version='0.0.4',
     description='Easy and simple evaluation language',
     url='https://github.com/OrbitalAds/Mihto',
     author='OrbitalAds',
