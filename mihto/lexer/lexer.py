@@ -18,7 +18,7 @@ class Lexer:
 
     def single_tokenize(self):
         for token_type, regex in TOKEN_PATTERNS:
-            regex = re.compile(r'\A({})'.format(regex))
+            regex = re.compile(r"\A{}".format(regex))
             value = regex.search(self.code)
             if value:
                 value = value.group(0)
