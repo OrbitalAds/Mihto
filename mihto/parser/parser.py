@@ -1,7 +1,9 @@
+from typing import Union
+
 from mihto.lexer.lexer import Token
 import mihto.lexer.token_types as ttypes
 from mihto.parser.exceptions import UnexpectedTokenFoundException
-from mihto.parser.nodes import ExpressionNode, VarRefNode, FloatNode, IntegerNode
+from mihto.parser.nodes import ExpressionNode, VarRefNode, FloatNode, IntegerNode, ValueNode
 
 
 class Parser:
@@ -9,7 +11,7 @@ class Parser:
     def __init__(self, tokens):
         self.tokens = tokens
 
-    def parse(self):
+    def parse(self) -> Union[ExpressionNode, None]:
         if not self.tokens:
             return None
         expression = self._parse_expression()
@@ -84,17 +86,17 @@ class Parser:
     def _parse_integer(self) -> IntegerNode:
         return IntegerNode(int(self.consume(ttypes.INTEGER).value))
 
-    def consume(self, expected_type: str) -> Token:
-        token = self.tokens.pop(0)
+    def _check_type(self, expected_type: Union[str, list], token) -> bool:
+        expected_type = [expected_type] if type(expected_type) is str else expected_type
+        return token.type in expected_type
 
-        if token.type == expected_type:
+    def consume(self, expected_type: Union[str, list]) -> Token:
+        token = self.tokens.pop(0)
+        if self._check_type(expected_type, token):
             return token
         else:
             raise UnexpectedTokenFoundException(
                 "Expected token type {} but got {} instead".format(expected_type, token.type))
 
-    def peek(self, expected_type, offset=0) -> bool:
-        if type(expected_type) is str:
-            return self.tokens and self.tokens[offset].type == expected_type
-        else:
-            return self.tokens and self.tokens[offset].type in expected_type
+    def peek(self, expected_type : Union[str, list], offset=0) -> bool:
+            return self.tokens and self._check_type(expected_type, self.tokens[offset])
