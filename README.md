@@ -15,15 +15,15 @@ using MAJOR.MINOR.PATCH format. A bump in the PATCH part will not mean API break
     * Variables: Variables you can define in the env of the Evaluator (or the Mihto class). Example: `var`, `Evaluator({'var': 3})`
     * Integers: Your old and trusty integer. `42`
     * Floats: Like more precise integers. `42.34`
-    * Comparison operators: Turn values into boolean expressions!. `<`, `<=`, `>`, `>=`, `=`, `!=`
-    * Logical operators: Link boolean expressions into one single boolean expression!. `y`. `o`
-    * Parenthesis: Gotta prioritize them operations. `(`, `)
+    * Comparison operators: Turn values into boolean expressions!. `<`, `<=`, `>`, `>=`, `=`, `<>`
+    * Logical operators: Link boolean expressions into one single boolean expression!. `and`. `or`
+    * Parenthesis: Gotta prioritize them operations. `(`, `)`
 
 * Examples: `Evaluator({'var' : 3, 'var2': 3}).evaluate(expression)`
     * expression = `1 < var` -> True
     * expression = `1 < var <= 42` -> True
-    * expression = `1 < var y var2 > 43` -> False
-    * expression = `1 > var o (1 < var y 3 <= var2 < 43)` -> True
+    * expression = `1 < var and var2 > 43` -> False
+    * expression = `1 > var or (1 < var and 3 <= var2 < 43)` -> True
 
 ## How to use it in your python code
 

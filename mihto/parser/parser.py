@@ -20,6 +20,10 @@ class Parser:
             self.consume(ttypes.OPENPAR)
             expression = self._parse_expression()
             self.consume(ttypes.CLOSEPAR)
+
+            if self.peek([ttypes.AND, ttypes.OR]):
+                operator = self._parse_logical_operator()
+                return ExpressionNode(expression, operator, self._parse_expression())
         else:
             expression = self._parse_atomic_expression()
         return expression

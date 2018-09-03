@@ -27,12 +27,12 @@ class TestParser(unittest.TestCase):
         self.assertEqual("1 < 2 and 2 < 3", str(parsed_expression))
 
     def test_parse_or_expression(self):
-        expression = "1 = 1 o 2 = 2"
+        expression = "1 = 1 or 2 = 2"
         parsed_expression = self.parse(expression)
         self.assertEqual("1 = 1 or 2 = 2", str(parsed_expression))
 
     def test_parse_nested_expressions(self):
-        expression = "1 = 1 o (2 = 3 y 4 = 4)"
+        expression = "1 = 1 or (2 = 3 and 4 = 4)"
         parsed_expression = self.parse(expression)
         self.assertEqual(parsed_expression.operator, ttypes.OR)
         self.assertEqual(parsed_expression.value1.operator, ttypes.EQUALS)
