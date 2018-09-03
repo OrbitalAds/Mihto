@@ -18,7 +18,7 @@ class Lexer:
 
     def single_tokenize(self):
         for token_type, regex in TOKEN_PATTERNS:
-            regex = re.compile(r'\A({})'.format(regex))
+            regex = re.compile(r"\A{}".format(regex))
             value = regex.search(self.code)
             if value:
                 value = value.group(0)
@@ -31,7 +31,7 @@ class Lexer:
 class Token:
     __slots__ = ('type', 'value')
 
-    def __init__(self, type, value):
+    def __init__(self, type: str, value):
         self.type = type
         self.value = value
 

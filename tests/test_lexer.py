@@ -2,6 +2,7 @@ import unittest
 
 from mihto import Lexer
 import mihto.lexer.token_types as ttypes
+from mihto.lexer.exceptions import UnknownTokenException
 
 
 class TestLexer(unittest.TestCase):
@@ -25,7 +26,7 @@ class TestLexer(unittest.TestCase):
         self.assertEqual(tokens[0].type, ttypes.IDENTIFIER)
 
     def test_tokenize_identifier_char_upper(self):
-        expression = "a"
+        expression = "A"
         tokens = Lexer(expression).tokenize()
         self.assertEqual(len(tokens), 1)
         self.assertEqual(tokens[0].type, ttypes.IDENTIFIER)
@@ -60,6 +61,23 @@ class TestLexer(unittest.TestCase):
         self.assertEqual(len(tokens), 1)
         self.assertEqual(tokens[0].type, ttypes.IDENTIFIER)
 
+    def test_tokenize_identifier_score_also_mixed(self):
+        expression = "aB123c-D45efG"
+        tokens = Lexer(expression).tokenize()
+        self.assertEqual(len(tokens), 1)
+        self.assertEqual(tokens[0].type, ttypes.IDENTIFIER)
+
+    def test_tokenize_identifier_underscore_also_mixed(self):
+        expression = "aB123c_D45efG"
+        tokens = Lexer(expression).tokenize()
+        self.assertEqual(len(tokens), 1)
+        self.assertEqual(tokens[0].type, ttypes.IDENTIFIER)
+
+    def test_tokenize_identifier_starts_digit_ko(self):
+        expression = "123asdf"
+        with self.assertRaises(UnknownTokenException):
+            tokens = Lexer(expression).tokenize()
+
     def test_tokenize_operator_lt(self):
         expression = "<"
         tokens = Lexer(expression).tokenize()
@@ -91,19 +109,19 @@ class TestLexer(unittest.TestCase):
         self.assertEqual(tokens[0].type, ttypes.EQUALS)
 
     def test_tokenize_operator_not_eq(self):
-        expression = "!="
+        expression = "<>"
         tokens = Lexer(expression).tokenize()
         self.assertEqual(len(tokens), 1)
         self.assertEqual(tokens[0].type, ttypes.NOT_EQUALS)
 
     def test_tokenize_operator_and(self):
-        expression = "y"
+        expression = "and"
         tokens = Lexer(expression).tokenize()
         self.assertEqual(len(tokens), 1)
         self.assertEqual(tokens[0].type, ttypes.AND)
 
     def test_tokenize_operator_or(self):
-        expression = "o"
+        expression = "or"
         tokens = Lexer(expression).tokenize()
         self.assertEqual(len(tokens), 1)
         self.assertEqual(tokens[0].type, ttypes.OR)
@@ -134,3 +152,4 @@ class TestLexer(unittest.TestCase):
         expression = "( foo    )"
         tokens = Lexer(expression).tokenize()
         self.assertEqual(len(tokens), 3)
+

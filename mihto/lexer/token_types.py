@@ -9,21 +9,29 @@ OR = 'or'
 IDENTIFIER = 'identifier'
 FLOAT = 'float'
 INTEGER = 'integer'
-OPENPAR = 'openpar'
-CLOSEPAR = 'closepar'
+OPENPAR = 'open_par'
+CLOSEPAR = 'close_par'
+PLUS =r"plus"
+SCORE = "minus"
+ASTERISK = "asterisk"
+BACKSLASH = "back_slash"
 
 TOKEN_PATTERNS = [
     [LESS_EQ_THAN, r"<="],
     [GREATER_EQ_THAN, r">="],
+    [NOT_EQUALS, r"<>"],
     [LESS_THAN, r"<"],
     [GREATER_THAN, r">"],
-    [NOT_EQUALS, r"!="],
     [EQUALS, r"="],
-    [AND, r"y"],
-    [OR, r"o"],
-    [IDENTIFIER, r"([a-zA-Z]+\d*)+"],
-    [FLOAT, r"\d+\.\d+"],
-    [INTEGER, r"\d+"],
+    [AND, r"\band\b"],
+    [OR, r"\bor\b"],
+    [PLUS, r"\+"],
+    [SCORE, r"-"],
+    [ASTERISK, r"\*"],
+    [BACKSLASH, r"\\"],
+    [IDENTIFIER, r"\b[a-zA-Z]+([a-zA-Z]|\d|_|\\|-)*\b"],
+    [FLOAT, r"\b\d+\.\d+\b"],
+    [INTEGER, r"\b\d+\b"],
     [OPENPAR, r"\("],
     [CLOSEPAR, r"\)"]
 ]
