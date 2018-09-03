@@ -35,43 +35,43 @@ class TestParser(unittest.TestCase):
         self.assertFalse(self.evaluate(expression))
 
     def test_not_equals_true(self):
-        expression = "1 != 0"
+        expression = "1 <> 0"
         self.assertTrue(self.evaluate(expression))
 
     def test_not_equals_false(self):
-        expression = "1 != 1"
+        expression = "1 <> 1"
         self.assertFalse(self.evaluate(expression))
 
     def test_and_true(self):
-        expression = "1 = 1 y 1 = 1"
+        expression = "1 = 1 and 1 = 1"
         self.assertTrue(self.evaluate(expression))
 
     def test_and_false_all_false(self):
-        expression = "1 = 0 y 1 = 0"
+        expression = "1 = 0 and 1 = 0"
         self.assertFalse(self.evaluate(expression))
 
     def test_and_false_first_false(self):
-        expression = "1 = 0 y 1 = 1"
+        expression = "1 = 0 and 1 = 1"
         self.assertFalse(self.evaluate(expression))
 
     def test_and_false_second_false(self):
-        expression = "1 = 1 y 1 = 0"
+        expression = "1 = 1 and 1 = 0"
         self.assertFalse(self.evaluate(expression))
 
     def test_or_false(self):
-        expression = "1 = 0 o 1 = 0"
+        expression = "1 = 0 or 1 = 0"
         self.assertFalse(self.evaluate(expression))
 
     def test_or_true_all_true(self):
-        expression = "1 = 1 o 1 = 1"
+        expression = "1 = 1 or 1 = 1"
         self.assertTrue(self.evaluate(expression))
 
     def test_or_true_first_true(self):
-        expression = "1 = 1 o 1 = 0"
+        expression = "1 = 1 or 1 = 0"
         self.assertTrue(self.evaluate(expression))
 
     def test_or_true_second_true(self):
-        expression = "1 = 0 o 1 = 1"
+        expression = "1 = 0 or 1 = 1"
         self.assertTrue(self.evaluate(expression))
 
     def test_var_ref_integer(self):
